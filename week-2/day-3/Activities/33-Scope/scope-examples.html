@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>My First Object</title>
-  </head>
-  <body>
 
-    <h1>Open the console to see the magic!</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>My First Object</title>
+</head>
 
-    <script>
+<body>
+
+  <h1>Open the console to see the magic!</h1>
+
+  <script>
     var exposed = "This string is visible everywhere!";
 
     // Note that we can assign functions to variables.
     // This is extremely important!
-    var firstFunction = function(message) {
+    var firstFunction = function (message) {
       // Inside of firstFunction, I can see both exposed and
       // message.
       console.log(message + exposed);
@@ -25,7 +27,7 @@
     // is only visible *inside* of firstFunction.
     // console.log(message);
 
-    var secondFunction = function(exposed) {
+    var secondFunction = function (exposed) {
       // secondFunction *should* be able to see the exposed
       //  variable we declared above, but we've "shadowed" it!
       console.log(exposed);
@@ -35,7 +37,7 @@
 
     // Finally, keep in mind that using "return" lets us
     // give something back to whomever called the function.
-    var thirdFunction = function(message) {
+    var thirdFunction = function (message) {
       return message + exposed;
     };
 
@@ -44,7 +46,8 @@
     // inside of your functions.
     var message = thirdFunction("Oh my! ");
     console.log(message);
-    </script>
+  </script>
 
-  </body>
+</body>
+
 </html>

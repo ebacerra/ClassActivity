@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <script>
+        var compChoice = ["h", "d", "g"];
+        alert("to make the car honk press H");
+        var drive = alert("press D to drive");
+        alert("press g to set a reminder");
+
+        document.onkeyup = function (event) {
+            var users = event.key;
+            console.log(users);
+            if (users === "h") {
+                document.write("honk, honk, honk")
+            } else {
+                moveOn.drive;
+            }
+            if (users === "d") {
+                document.write("drive to work");
+            }
+            if (users === "g") {
+                document.write("get a TuneUp");
+            }
+
+        };
+
+    </script>
+
+</body>
+
+</html>
