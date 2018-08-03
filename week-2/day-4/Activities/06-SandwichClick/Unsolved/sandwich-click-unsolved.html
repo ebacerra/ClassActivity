@@ -23,14 +23,35 @@
     // This code makes sure that the JavaScript doesn't get run until the HTML is finished loading
     // It's useful to become familiar with now.
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
       // VARIABLES
       // ====================================================================
       // Here we create variables for tracking the number of sandwiches eaten
       // ...
+      var pbjCounter = 0;
+      var GCCounter = 0;
+      var RBCounter = 0;
+
+      $("#pbj").on("click", function () {
+        pbjCounter++;
+        alert($(this).text() + " eaten= " + pbjCounter);
+        var pbjImg = $("<img>").attr("alt", "Beijing Brush Seller");
+      });
+
+      $("#grilledcheese").on("click", function () {
+        GCCounter++;
+        alert($(this).text() + " eaten= " + GCCounter);
+      });
+
+      $("#roastbeef").on("click", function () {
+        RBCounter++;
+        alert($(this).text() + " eaten=" + RBCounter);
+      });
 
 
+
+      // to attach and image ---> .attr( "alt", "Beijing Brush Seller" );
       // ...
 
       // FUNCTIONS
@@ -44,7 +65,7 @@
 
     });
 
-</script>
+  </script>
 
 </body>
 
