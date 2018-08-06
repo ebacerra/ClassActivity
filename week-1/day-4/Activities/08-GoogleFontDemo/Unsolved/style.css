@@ -3,3 +3,20 @@
  **/
 
 /* Add in the Google Fonts of your choice */
+ h3:hover{
+     background-color: rgb(182, 238, 229);
+ }
+h1 {
+    font-family: 'Lucida Sans';
+    color: blueviolet;
+}
+
+h3 {
+    font-family: 'Trebuchet MS';
+    color: aqua;
+}
+
+h4 {
+    font
+    
+}
