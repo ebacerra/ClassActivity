@@ -33,15 +33,33 @@
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function(response) {
+    }).then(function (response) {
 
       // Obtain a reference to the tbody element in the DOM
+      var body = $("tbody");
       // Create and save a reference to new empty table row
+      var tRow = $("<tr>");
       // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
-      // Append the td elements to the new table row
-      // Append the table row to the tbody element
-    });
+      var title = $("<td>");
+      console.log(title);
+      var year = $("<td>");
+      var actors = $("<td>");
 
+      // Append the td elements to the new table row
+      tr.append(title)
+      tr.append(year)
+      tr.append(actors)
+      // Append the table row to the tbody element
+      tbody.append(tr);
+
+    });
+    var myFunction = function (someCar) {
+      var myCar = someCar;
+    }
+
+    myFunction("Honda");
+
+    console.log(myCar);
     // Repeat the above logic to add rows for two more movies of your choice
 
     // BONUS: Once complete, try to make your code as DRY as possible through the use of functions
