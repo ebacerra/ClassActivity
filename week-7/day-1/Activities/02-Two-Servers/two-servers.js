@@ -9,12 +9,12 @@ var PORT2 = 7500;
 function handleRequest1(request, response) {
 
     // Send the below string to the client when the user visits the PORT URL
-    response.end("You're good to go!: " + request.url);
+    response.end("You're good to go!" + request.url);
 }
 function handleRequest2(request, response) {
 
     // Send the below string to the client when the user visits the PORT URL
-    response.end("You're looking good: " + request.url);
+    response.end("You're looking good " + request.url);
 }
 
 // Use the Node HTTP package to create our server.
