@@ -11,8 +11,12 @@ var app = express();
 // Routes
 // What routes do you need to have? Which ones are optional?
 // TODO Add your routes here
-app.get("", function(req, res) {
+app.get("/:operation/:numOne/:numTwo", function (req, res) {
+  console.log(req.params);
 
+  var operation = req.params.operation;
+  var inputOne = +req.params.numOne;
+  var inputTwo = +req.params.numTwo;
   // TODO parse out the variables from the request
   // Parameters are received from the URL
   // TODO make sure they're converted to integers (and not strings)
@@ -22,22 +26,33 @@ app.get("", function(req, res) {
   var result;
   // Switch statement chooses operation based on the operation parameter.
   switch (operation) {
-  // BONUS - How could you use * + etc. inside the app.get()?
-  case "add":
-    // Add your logic here. Pun intended.
-    break;
-  case "subtract":
-    // Subtract logic
-    break;
-  case "multiply":
-    // Multiply
-    break;
-  case "divide":
-    // Divide
-    break;
-  default:
-    // Handle anything that isn't specified
-    result =
+    // BONUS - How could you use * + etc. inside the app.get()?
+    case "add":
+    case "+":
+
+      result = inputOne + inputTwo;
+      // Add your logic here. Pun intended.
+      break;
+    case "subtract":
+    case "-":
+
+      result = inputOne - inputTwo;
+      // Subtract logic
+      break;
+    case "multiply":
+    case "*":
+
+      result = inputOne * inputTwo;
+      // Multiply
+      break;
+    case "divide":
+
+      result = inputOne / inputTwo;
+      // Divide
+      break;
+    default:
+      // Handle anything that isn't specified
+      result =
         "Sorry! The only valid operations are add, subtract, multiply, and divide.";
   }
 
@@ -47,7 +62,7 @@ app.get("", function(req, res) {
 });
 
 // Start our server so that it can begin listening to client requests.
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   // Log (server-side) when our server has started
   console.log("Server listening on: http://localhost:" + PORT);
 });
