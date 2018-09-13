@@ -1,0 +1,92 @@
+<h1>Movie Watchlist</h1>
+
+{{!-- creates a list of plans --}}
+<ul>
+  {{#each movie}}
+  <li>
+    <p>
+      {{this.id}}. {{this.movie}}
+
+      <button data-movieid="{{this.id}}" class="delmovie">Delete Plan!</button>
+    </p>
+  </li>
+  {{/each}}
+</ul>
+
+<h2>Create a Plan</h2>
+<form id="createlist" class="button-size">
+  <textarea type="text" name="movie"></textarea>
+  <button type="submit">Save Plan!</button>
+</form>
+
+<h2>Update a Plan</h2>
+<form id="updatemovie" class="button-size">
+  <select name="id">
+    {{#each movies}}
+    <option value="{{this.id}}">{{this.movie}}</option>
+    {{/each}}
+  </select>
+  <textarea type="text" name="movie" placeholder="movie"></textarea>
+  <button type="submit">Update Plan!</button>
+</form>
+
+<script type="text/javascript">
+  $(".delmovie").on("click", function (event) {
+    var id = $(this).data("movieid"); //.attr or .data can be used. If attr is chosen ("data-planid") or if .data ("planid")
+
+    // Send the DELETE request.
+    $.ajax("/movies/" + id, {
+      type: "DELETE"
+    }).then(
+      function () {
+        console.log("deleted id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $("#createlist").on("submit", function (event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var newMovie = {
+      movie: $("#createlist [name=movie]").val().trim()
+    };
+
+    // Send the POST request.
+    $.ajax("/movies", {
+      type: "POST",
+      data: newMovie
+    }).then(
+      function () {
+        console.log("created new movie");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $("#updatemovie").on("submit", function (event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var id = $("[name=id]").val().trim();
+
+    var updatedMovie = {
+      movie: $("#updatemovie [name=movie]").val().trim()
+    };
+
+    // Send the PUT request.
+    $.ajax("/movies/" + id, {
+      type: "PUT",
+      data: updatedMovie
+    }).then(
+      function () {
+        console.log("updated id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+</script>

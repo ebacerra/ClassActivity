@@ -1,5 +1,6 @@
 <h1>Day Planner</h1>
 
+{{!-- creates a list of plans --}}
 <ul>
   {{#each plans}}
   <li>
@@ -21,23 +22,23 @@
 <h2>Update a Plan</h2>
 <form id="updateplan" class="button-size">
   <select name="id">
-		{{#each plans}}
-			<option value="{{this.id}}">{{this.plan}}</option>
-		{{/each}}
-	</select>
+    {{#each plans}}
+    <option value="{{this.id}}">{{this.plan}}</option>
+    {{/each}}
+  </select>
   <textarea type="text" name="plan" placeholder="plan"></textarea>
   <button type="submit">Update Plan!</button>
 </form>
 
 <script type="text/javascript">
-  $(".delplan").on("click", function(event) {
-    var id = $(this).data("planid");
+  $(".delplan").on("click", function (event) {
+    var id = $(this).data("planid"); //.attr or .data can be used. If attr is chosen ("data-planid") or if .data ("planid")
 
     // Send the DELETE request.
     $.ajax("/todos/" + id, {
       type: "DELETE"
     }).then(
-      function() {
+      function () {
         console.log("deleted id ", id);
         // Reload the page to get the updated list
         location.reload();
@@ -45,7 +46,7 @@
     );
   });
 
-  $("#createplan").on("submit", function(event) {
+  $("#createplan").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
@@ -58,7 +59,7 @@
       type: "POST",
       data: newPlan
     }).then(
-      function() {
+      function () {
         console.log("created new plan");
         // Reload the page to get the updated list
         location.reload();
@@ -66,7 +67,7 @@
     );
   });
 
-  $("#updateplan").on("submit", function(event) {
+  $("#updateplan").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
@@ -81,7 +82,7 @@
       type: "PUT",
       data: updatedPlan
     }).then(
-      function() {
+      function () {
         console.log("updated id ", id);
         // Reload the page to get the updated list
         location.reload();
