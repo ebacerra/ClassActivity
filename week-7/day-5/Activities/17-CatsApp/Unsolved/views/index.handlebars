@@ -4,9 +4,9 @@
 
 <ul>
   {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
+  {{#unless sleepy}}
+  {{> cats/cat-block sleep=true}}
+  {{/unless}}
   {{/each}}
 </ul>
 
@@ -14,9 +14,9 @@
 
 <ul>
   {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
+  {{#if sleepy}}
+  {{> cats/cat-block sleep=false}}
+  {{/if}}
   {{/each}}
 </ul>
 
@@ -36,3 +36,23 @@
 
   <button type="submit">Add Cat</button>
 </form>
+
+
+<script>
+  $(".delcat").on("click", function (event) {
+    var id = $(this).data("caid"); //.attr or .data can be used. If attr is chosen ("data-planid") or if .data ("planid")
+
+    // Send the DELETE request.
+    $.ajax("/cats/" + id, {
+      type: "DELETE"
+    }).then(
+      function () {
+        console.log("deleted id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+
+</script> --}}
